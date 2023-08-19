@@ -8,13 +8,13 @@
           [view]="view"
           [(viewDate)]="viewDate"
           (viewDateChange)="closeOpenMonthViewDay()">
-          <p style="margin: 10px; font-size: 20px;"> Anterior </p>
+          <p> {{ (view === CalendarView.Month) ? 'Mês anterior' : (view === CalendarView.Week ? 'Semana Anterior' : 'Dia Anterior' ) }} </p>
         </div>
 
         <div
           mwlCalendarToday
           [(viewDate)]="viewDate">
-          <p style="margin: 10px; font-size: 20px;"> Hoje </p>
+          <p> Hoje </p>
         </div>
 
         <div
@@ -22,14 +22,14 @@
           [view]="view"
           [(viewDate)]="viewDate"
           (viewDateChange)="closeOpenMonthViewDay()">
-          <p style="margin: 10px; font-size: 20px;"> Próximo </p>
+          <p> {{ (view === CalendarView.Month) ? 'Próximo Mês' : (view === CalendarView.Week ? 'Próxima Semana' : 'Próximo Dia' ) }} </p>
         </div>
       </div>
     </div>
 
     <!-- Data Selecionada -->
     <div>
-      <h3 style="font-size: 30px; color: dodgerblue;">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
     </div>
         
     <div>
@@ -37,19 +37,19 @@
         <div
           (click)="setView(CalendarView.Month)"
           [class.active]="view === CalendarView.Month">
-          <p style="margin: 10px; font-size: 20px;"> Mês </p>
+          <p> Mês </p>
         </div>
 
         <div
           (click)="setView(CalendarView.Week)"
           [class.active]="view === CalendarView.Week">
-          <p style="margin: 10px; font-size: 20px;"> Semana </p>
+          <p> Semana </p>
         </div>
 
         <div
           (click)="setView(CalendarView.Day)"
           [class.active]="view === CalendarView.Day">
-          <p style="margin: 10px; font-size: 20px;"> Dia </p>
+          <p> Dia </p>
         </div>
       </div>
     </div>

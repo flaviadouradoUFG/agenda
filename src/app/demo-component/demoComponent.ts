@@ -44,12 +44,18 @@ const colors: Record<string, EventColor> = {
   styles: [
     `
       h3 {
-        margin: 0 0 10px;
+        font-size: 30px; 
+        color: dodgerblue;
       }
 
       pre {
         background-color: #f5f5f5;
         padding: 15px;
+      }
+
+      p {
+        margin: 10px; 
+        font-size: 20px;
       }
     `,
   ],
