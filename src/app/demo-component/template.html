@@ -1,64 +1,64 @@
-<div class="row text-center">
-    <div class="col-md-4">
-      <div class="btn-group">
+<div style="display: flex; justify-content: space-evenly; margin: 4em;">
+
+  <!-- Botões de mudança de datas -->
+  <div>
+      <div style="display: inline-flex;">
         <div
-          class="btn btn-primary"
           mwlCalendarPreviousView
           [view]="view"
           [(viewDate)]="viewDate"
-          (viewDateChange)="closeOpenMonthViewDay()"
-        >
-          Previous
+          (viewDateChange)="closeOpenMonthViewDay()">
+          <p style="margin: 10px; font-size: 20px;"> Anterior </p>
         </div>
+
         <div
-          class="btn btn-outline-secondary"
           mwlCalendarToday
-          [(viewDate)]="viewDate"
-        >
-          Today
+          [(viewDate)]="viewDate">
+          <p style="margin: 10px; font-size: 20px;"> Hoje </p>
         </div>
+
         <div
-          class="btn btn-primary"
           mwlCalendarNextView
           [view]="view"
           [(viewDate)]="viewDate"
-          (viewDateChange)="closeOpenMonthViewDay()"
-        >
-          Next
+          (viewDateChange)="closeOpenMonthViewDay()">
+          <p style="margin: 10px; font-size: 20px;"> Próximo </p>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+
+    <!-- Data Selecionada -->
+    <div>
+      <h3 style="font-size: 30px; color: dodgerblue;">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
     </div>
-    <div class="col-md-4">
-      <div class="btn-group">
+        
+    <div>
+      <div style="display: inline-flex;">
         <div
-          class="btn btn-primary"
           (click)="setView(CalendarView.Month)"
-          [class.active]="view === CalendarView.Month"
-        >
-          Month
+          [class.active]="view === CalendarView.Month">
+          <p style="margin: 10px; font-size: 20px;"> Mês </p>
         </div>
+
         <div
-          class="btn btn-primary"
           (click)="setView(CalendarView.Week)"
-          [class.active]="view === CalendarView.Week"
-        >
-          Week
+          [class.active]="view === CalendarView.Week">
+          <p style="margin: 10px; font-size: 20px;"> Semana </p>
         </div>
+
         <div
-          class="btn btn-primary"
           (click)="setView(CalendarView.Day)"
-          [class.active]="view === CalendarView.Day"
-        >
-          Day
+          [class.active]="view === CalendarView.Day">
+          <p style="margin: 10px; font-size: 20px;"> Dia </p>
         </div>
       </div>
     </div>
   </div>
+
   <br />
+
   <div [ngSwitch]="view">
+    <!-- Componente de mês -->
     <mwl-calendar-month-view
       *ngSwitchCase="CalendarView.Month"
       [viewDate]="viewDate"
@@ -67,25 +67,26 @@
       [activeDayIsOpen]="activeDayIsOpen"
       (dayClicked)="dayClicked($event.day)"
       (eventClicked)="handleEvent('Clicked', $event.event)"
-      (eventTimesChanged)="eventTimesChanged($event)"
-    >
+      (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-month-view>
+
+    <!-- Componente de semana -->
     <mwl-calendar-week-view
       *ngSwitchCase="CalendarView.Week"
       [viewDate]="viewDate"
       [events]="events"
       [refresh]="refresh"
       (eventClicked)="handleEvent('Clicked', $event.event)"
-      (eventTimesChanged)="eventTimesChanged($event)"
-    >
+      (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-week-view>
+
+    <!-- Componente de dia -->
     <mwl-calendar-day-view
       *ngSwitchCase="CalendarView.Day"
       [viewDate]="viewDate"
       [events]="events"
       [refresh]="refresh"
       (eventClicked)="handleEvent('Clicked', $event.event)"
-      (eventTimesChanged)="eventTimesChanged($event)"
-    >
+      (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-day-view>
   </div>

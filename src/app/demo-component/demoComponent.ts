@@ -55,6 +55,7 @@ const colors: Record<string, EventColor> = {
   ],
   templateUrl: 'template.html',
 })
+
 export class DemoComponent {
   view: CalendarView = CalendarView.Month;
 
@@ -108,18 +109,18 @@ export class DemoComponent {
       start: startOfDay(new Date()),
       title: 'An event with no end date',
       color: { ...{
-        primary: '#ad2121',
-        secondary: '#FAE3E3',
+        primary: '#e3bc08',
+        secondary: '#FDF1BA',
       } },
       actions: this.actions,
     },
-    {
+    {  
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
       title: 'A long event that spans 2 months',
       color: { ...{
-        primary: '#ad2121',
-        secondary: '#FAE3E3',
+        primary: '#1e90ff',
+        secondary: '#D1E8FF',
       } },
       allDay: true,
     },
@@ -128,8 +129,8 @@ export class DemoComponent {
       end: addHours(new Date(), 2),
       title: 'A draggable and resizable event',
       color: { ...{
-        primary: '#ad2121',
-        secondary: '#FAE3E3',
+        primary: '#e3bc08',
+        secondary: '#FDF1BA',
       } },
       actions: this.actions,
       resizable: {
