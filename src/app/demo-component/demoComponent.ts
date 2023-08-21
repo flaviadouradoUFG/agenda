@@ -14,7 +14,6 @@ import {
   isSameMonth,
   addHours,
 } from 'date-fns';
-import { Subject } from 'rxjs';
 import {
   CalendarEvent,
   CalendarEventAction,
@@ -22,6 +21,7 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
+import { Subject } from 'rxjs'
 
 const colors: Record<string, EventColor> = {
   red: {
